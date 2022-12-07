@@ -1,5 +1,9 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import React, { useState } from "react";
+import header from "./components/header/header.js";
+import footer from "./components/footer/footer.js";
+import navbar from "./components/navbar/navbar.js";
 
 function App() {
   return (
