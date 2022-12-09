@@ -1,25 +1,25 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { Profile, Thought } = require('../models');
+const { Profile, Question } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
     users: async () => {
-      return Profile.find().populate('thoughts');
+      return Profile.find().populate('questions');
     },
     user: async (parent, { username }) => {
-      return Profile.findOne({ username }).populate('thoughts');
+      return Profile.findOne({ username }).populate('questions');
     },
-    thoughts: async (parent, { username }) => {
+    questions: async (parent, { username }) => {
       const params = username ? { username } : {};
       return Profile.find(params).sort({ createdAt: -1 });
     },
-    thought: async (parent, { thoughtId }) => {
-      return Profile.findOne({ _id: thoughtId });
+    question: async (parent, { questionId }) => {
+      return Profile.findOne({ _id: questionId });
     },
     me: async (parent, context) => {
       if (context.user) {
-        return Profile.findOne({ _id: context.user._id }).populate('thoughts');
+        return Profile.findOne({ _id: context.user._id }).populate('questions');
       }
       throw new AuthenticationError('You need to be logged in!');
     },
@@ -48,29 +48,29 @@ const resolvers = {
 
       return { token, user };
     },
-    addThought: async (parent, { thoughtText }, context) => {
+    addQuestion: async (parent, { questionText }, context) => {
       if (context.user) {
-        const thought = await Thought.create({
-          thoughtText,
-          thoughtAuthor: context.user.username,
+        const question = await Question.create({
+          questionText,
+          questionAuthor: context.user.username,
         });
 
         await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { thoughts: thought._id } }
+          { $addToSet: { questions: question._id } }
         );
 
-        return thought;
+        return question;
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    addComment: async (parent, { thoughtId, commentText }, context) => {
+    addResponse: async (parent, { questionId, responseText }, context) => {
       if (context.user) {
-        return Thought.findOneAndUpdate(
-          { _id: thoughtId },
+        return Question.findOneAndUpdate(
+          { _id: questionId },
           {
             $addToSet: {
-              comments: { commentText, commentAuthor: context.user.username },
+              responses: { responseText, responseAuthor: context.user.username },
             },
           },
           {
@@ -81,31 +81,31 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    removeThought: async (parent, { thoughtId }, context) => {
+    removeQuestion: async (parent, { questionId }, context) => {
       if (context.user) {
-        const thought = await Thought.findOneAndDelete({
-          _id: thoughtId,
-          thoughtAuthor: context.user.username,
+        const question = await Question.findOneAndDelete({
+          _id: questionId,
+          questionAuthor: context.user.username,
         });
 
         await Profile.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { thoughts: thought._id } }
+          { $pull: { questions: question._id } }
         );
 
-        return thought;
+        return question;
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    removeComment: async (parent, { thoughtId, commentId }, context) => {
+    removeResponse: async (parent, { questionId, responseId }, context) => {
       if (context.user) {
-        return Thought.findOneAndUpdate(
-          { _id: thoughtId },
+        return Question.findOneAndUpdate(
+          { _id: questionId },
           {
             $pull: {
-              comments: {
-                _id: commentId,
-                commentAuthor: context.user.username,
+              responses: {
+                _id: responseId,
+                responseAuthor: context.user.username,
               },
             },
           },
