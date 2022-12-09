@@ -40,6 +40,6 @@ const profileSchema = new Schema({
     return bcrypt.compare(password, this.password);
   };
   
-  const User = model('Profile', profileSchema);
+  const Profile = model('Profile', profileSchema);
   
   module.exports = Profile;
