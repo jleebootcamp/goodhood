@@ -19,10 +19,10 @@ const profileSchema = new Schema({
       required: true,
       minlength: 5,
     },
-    thoughts: [
+    questions: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'Thoughts',
+        ref: 'Question',
       },
     ],
   });
