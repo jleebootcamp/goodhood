@@ -1,33 +1,31 @@
 import "./header.css";
-// import Navbar from "../navbar/navbar.js";
-import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Header({ currentPage, setCurrentPage }) {
+  console.log(6, currentPage);
   return (
     <div className="header">
       <a className="headerTitle">What's Good In Da Hood</a>
       <ul className="header-nav mr-auto">
         <li className="nav-item active">
-          <a
+          <Link
             className="nav-link"
             name="top"
-            aria-current="page"
-            href="#Top"
+            to="Login"
             onClick={() => setCurrentPage("LogIn")}
           >
             LogIn
-          </a>
+          </Link>
         </li>
         <li className="nav-item active">
-          <a
+          <Link
             className="nav-link"
             name="top"
-            aria-current="page"
-            href="#Top"
-            onClick={() => setCurrentPage("LogIn")}
+            to="Home"
+            onClick={() => setCurrentPage("Home")}
           >
-            Forum
-          </a>
+            Home
+          </Link>
         </li>
       </ul>
     </div>
