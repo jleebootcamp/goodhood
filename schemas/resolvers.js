@@ -1,25 +1,25 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { Profile, Question } = require('../models');
+const { User, Question } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
     users: async () => {
-      return Profile.find().populate('questions');
+      return User.find().populate('questions');
     },
     user: async (parent, { username }) => {
-      return Profile.findOne({ username }).populate('questions');
+      return User.findOne({ username }).populate('questions');
     },
     questions: async (parent, { username }) => {
       const params = username ? { username } : {};
-      return Profile.find(params).sort({ createdAt: -1 });
+      return User.find(params).sort({ createdAt: -1 });
     },
     question: async (parent, { questionId }) => {
-      return Profile.findOne({ _id: questionId });
+      return User.findOne({ _id: questionId });
     },
     me: async (parent, context) => {
       if (context.user) {
-        return Profile.findOne({ _id: context.user._id }).populate('questions');
+        return User.findOne({ _id: context.user._id }).populate('questions');
       }
       throw new AuthenticationError('You need to be logged in!');
     },
@@ -27,12 +27,12 @@ const resolvers = {
 
   Mutation: {
     addUser: async (parent, { username, email, password }) => {
-      const user = await Profile.create({ username, email, password });
+      const user = await User.create({ username, email, password });
       const token = signToken(user);
       return { token, user };
     },
     login: async (parent, { email, password }) => {
-      const user = await Profile.findOne({ email });
+      const user = await User.findOne({ email });
 
       if (!user) {
         throw new AuthenticationError('No user found with this email address');
@@ -88,7 +88,7 @@ const resolvers = {
           questionAuthor: context.user.username,
         });
 
-        await Profile.findOneAndUpdate(
+        await User.findOneAndUpdate(
           { _id: context.user._id },
           { $pull: { questions: question._id } }
         );
