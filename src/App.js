@@ -18,9 +18,10 @@ import Login from './pages/Login';
 import SingleQuestion from './pages/SingleQuestion';
 import Profile from './pages/Profile';
 import Map from "./components/Map/Map";
-function App() {
-  const [currentPage, setCurrentPage] = useState("Login");
-  console.log(11, currentPage);
+
+// function App() {
+//   const [currentPage, setCurrentPage] = useState("Login");
+//   console.log(11, currentPage);
 
 
 // Construct our main GraphQL API endpoint
@@ -84,12 +85,12 @@ function App() {
           </div>
           <Footer />
         </div>
-        <div>
+        {/* <div>
           <Map />
         </div>
         <Footer />
-      </div>
-    </Router>
+      </div> */}
+    {/* </Router> */}
 
       </Router>
     </ApolloProvider>
