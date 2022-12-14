@@ -16,6 +16,14 @@ import Login from './pages/Login';
 import Header from "./components/header/header.js";
 import Footer from "./components/footer/footer.js";
 
+import Login from "./pages/login";
+import Home from "./pages/home/home.js";
+import Map from "./components/Map/Map";
+function App() {
+  const [currentPage, setCurrentPage] = useState("Login");
+  console.log(11, currentPage);
+
+
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -39,6 +47,7 @@ const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
+
 
 function App() {
   return (
@@ -76,6 +85,13 @@ function App() {
           </div>
           <Footer />
         </div>
+        <div>
+          <Map />
+        </div>
+        <Footer />
+      </div>
+    </Router>
+
       </Router>
     </ApolloProvider>
   );
