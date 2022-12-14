@@ -9,15 +9,14 @@ import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Home from './pages/home/home';
-import Signup from './pages/Signup';
-import Login from './pages/Login';
-// import SingleQuestion from './pages/SingleQuestion';
-// import Profile from './pages/Profile';
 import Header from "./components/header/header.js";
 import Footer from "./components/footer/footer.js";
 
-import Login from "./pages/login";
-import Home from "./pages/home/home.js";
+
+import Signup from './pages/Signup';
+import Login from './pages/Login';
+import SingleQuestion from './pages/SingleQuestion';
+import Profile from './pages/Profile';
 import Map from "./components/Map/Map";
 function App() {
   const [currentPage, setCurrentPage] = useState("Login");
@@ -69,7 +68,7 @@ function App() {
                 path="/signup"
                 element={<Signup />}
               />
-              {/* <Route 
+              <Route 
                 path="/me"
                 element={<Profile />}
               />
@@ -80,7 +79,7 @@ function App() {
               <Route 
                 path="/questions/:questionId"
                 element={<SingleQuestion />}
-              /> */}
+              />
             </Routes>
           </div>
           <Footer />
