@@ -6,7 +6,7 @@ import Header from "./components/header/header.js";
 import Footer from "./components/footer/footer.js";
 import Login from "./pages/login";
 import Home from "./pages/home/home.js";
-
+import Map from "./components/Map/Map";
 function App() {
   const [currentPage, setCurrentPage] = useState("Login");
   console.log(11, currentPage);
@@ -21,6 +21,9 @@ function App() {
 
             <Route path="/Home" element={<Home />} />
           </Routes>
+        </div>
+        <div>
+          <Map />
         </div>
         <Footer />
       </div>
