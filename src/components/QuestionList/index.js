@@ -7,9 +7,9 @@ const QuestionList = ({
   showTitle = true,
   showUsername = true,
 }) => {
-  if (!questions.length) {
-    return <h3>No Questions Yet</h3>;
-  }
+  // if (!questions.length) {
+  //   return <h3>No Questions Yet</h3>;
+  // }
 
   return (
     <div>

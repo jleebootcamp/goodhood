@@ -26,8 +26,9 @@ const QuestionForm = () => {
       }
 
       // update me object's cache
-      const { me } = cache.readQuery({ query: QUERY_ME });
-      cache.writeQuery({
+      const { me }  = cache.readQuery({ query: QUERY_ME });
+      console.log(error)
+        cache.writeQuery({
         query: QUERY_ME,
         data: { me: { ...me, questions: [...me.questions, addQuestion] } },
       });
@@ -62,7 +63,7 @@ const QuestionForm = () => {
 
   return (
     <div>
-      <h3>What's on your techy mind?</h3>
+      <h3>What would you like to know about the neighborhood?</h3>
 
       {Auth.loggedIn() ? (
         <>
