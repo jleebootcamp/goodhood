@@ -13,7 +13,7 @@ import Header from "./components/header/header.js";
 import Footer from "./components/footer/footer.js";
 
 import Signup from './pages/Signup';
-import Login from './pages/Login';
+import Login from './pages/login';
 import SingleQuestion from './pages/SingleQuestion';
 import Profile from './pages/Profile';
 import Map from "./components/Map/Map";
