@@ -11,13 +11,14 @@ const resolvers = {
       return User.findOne({ username }).populate('questions');
     },
     questions: async (parent, { username }) => {
-      const params = username ? { username } : {};
-      return User.find(params).sort({ createdAt: -1 });
+      // const params = username ? { username } : {};
+      return Question.find().sort({ createdAt: -1 });
     },
     question: async (parent, { questionId }) => {
       return User.findOne({ _id: questionId });
     },
-    me: async (parent, context) => {
+    me: async (parent, args, context) => {
+      console.log(context)
       if (context.user) {
       const userData = await User.findOne({ _id: context.user._id }).populate('questions');
       return userData;

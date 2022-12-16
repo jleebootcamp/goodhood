@@ -10,12 +10,13 @@ const QuestionList = ({
   // if (!questions.length) {
   //   return <h3>No Questions Yet</h3>;
   // }
+  const mostRecent = [questions[0], questions[1], questions[2]];
 
   return (
     <div>
       {showTitle && <h3>{title}</h3>}
       {questions &&
-        questions.map((question) => (
+        mostRecent.map((question) => (
           <div key={question._id} className="card mb-3">
             <h4 className="card-header bg-primary text-light p-2 m-0">
               {showUsername ? (

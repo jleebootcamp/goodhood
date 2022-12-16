@@ -1,17 +1,3 @@
-// import "./home.css";
-// import React from "react";
-
-// const Home = () => {
-//   return (
-//     <div>
-//       <h1>Home</h1>
-//       <h1>What's good in the neighborhood? Find honest reviews from the most trusted sources, your neighbors! </h1>
-//     </div>
-//   );
-// };
-
-// export default Home;
-
 import React from 'react';
 import { useQuery } from '@apollo/client';
 
@@ -23,7 +9,7 @@ import { QUERY_QUESTIONS } from '../../utils/queries';
 const Home = () => {
   const { loading, data } = useQuery(QUERY_QUESTIONS);
   const questions = data?.questions || [];
-
+console.log(questions)
   return (
     <main>
       <div className="flex-row justify-center">
@@ -37,9 +23,11 @@ const Home = () => {
           {loading ? (
             <div>Loading...</div>
           ) : (
-            <QuestionList
+            <QuestionList 
               questions={questions}
               title="Some Feed for Question(s)..."
+              showTitle = {true}
+              showUsername = {true}
             />
           )}
         </div>
