@@ -17,6 +17,10 @@
   background-position: left center;
   background-size: 30px;
 }
+#memberList ul li {
+  margin:0;
+  padding:0;
+}
 
 #copyright {
   position: fixed;
