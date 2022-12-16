@@ -9,7 +9,7 @@ import { QUERY_QUESTIONS } from '../../utils/queries';
 const Home = () => {
   const { loading, data } = useQuery(QUERY_QUESTIONS);
   const questions = data?.questions || [];
-
+console.log(questions)
   return (
     <main>
       <div className="flex-row justify-center">
@@ -23,9 +23,11 @@ const Home = () => {
           {loading ? (
             <div>Loading...</div>
           ) : (
-            <QuestionList
+            <QuestionList 
               questions={questions}
               title="Some Feed for Question(s)..."
+              showTitle = {true}
+              showUsername = {true}
             />
           )}
         </div>
