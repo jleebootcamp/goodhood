@@ -17,7 +17,8 @@ const resolvers = {
     question: async (parent, { questionId }) => {
       return User.findOne({ _id: questionId });
     },
-    me: async (parent, context) => {
+    me: async (parent, args, context) => {
+      console.log(context)
       if (context.user) {
       const userData = await User.findOne({ _id: context.user._id }).populate('questions');
       return userData;

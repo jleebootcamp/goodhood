@@ -12,7 +12,6 @@ import Home from './pages/home/home';
 import Header from "./components/header/header.js";
 import Footer from "./components/footer/footer.js";
 
-
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import SingleQuestion from './pages/SingleQuestion';
@@ -27,6 +26,7 @@ import Map from "./components/Map/Map";
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
   uri: '/graphql',
+  cache: new InMemoryCache()
 });
 
 // Construct request middleware that will attach the JWT token to every request as an `authorization` header

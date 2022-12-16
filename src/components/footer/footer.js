@@ -9,7 +9,7 @@ const Footer = () => {
     <div>
       <CFooter className="footer">
         {data.map(({ url, contributor }) => (
-          <div>
+          <div key={url}>
             <ul id="members">
               <li>
                 <CLink
