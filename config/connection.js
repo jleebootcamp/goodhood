@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 mongoose.connect(
-  process.env.JAWSDB_MARIA_URL || 'mongodb://localhost/goodhood',
+  process.env.MONGODB_URI || 'mongodb://localhost/goodhood',
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
