@@ -1,3 +1,40 @@
+import style from "./header.module.css";
+import { Link } from "react-router-dom";
+
+export default function Header({ currentPage, setCurrentPage }) {
+  return (
+    <nav className={style.navbar}>
+      <div className={style.header}>
+        <Link to="/" className={style.headerTitle}>
+          What's Good In Da Hood
+        </Link>
+        <ul className={style.header_nav}>
+          <li>
+            <Link
+              className={style.nav_item}
+              to="/"
+              // onClick={() => setCurrentPage("Home")}
+            >
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link
+              className={style.nav_item}
+              to="/login"
+              // onClick={() => setCurrentPage("LogIn")}
+            >
+              Login
+            </Link>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  );
+}
+
+
+
 // import "./header.css";
 // import { Link } from "react-router-dom";
 
@@ -31,7 +68,10 @@
 //     </div>
 //   );
 // }
-import React from 'react';
+
+
+
+/* import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Auth from '../../utils/auth';
@@ -76,4 +116,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Header; */

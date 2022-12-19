@@ -1,4 +1,4 @@
-import React from 'react';
+/* import React from 'react';
 
 // Import the `useParams()` hook
 import { useParams } from 'react-router-dom';
@@ -55,4 +55,4 @@ const SingleQuestion = () => {
   );
 };
 
-export default SingleQuestion;
+export default SingleQuestion; */

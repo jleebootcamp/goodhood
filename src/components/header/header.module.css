@@ -1,0 +1,44 @@
+.navbar {
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+}
+
+.header {
+  display: flex;
+  width: 90%;
+  padding: 20;
+  height: 110px;
+  z-index: 1100;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header_nav {
+  list-style-type: none;
+  text-decoration: none;
+  display: flex;
+  gap: 10px;
+}
+
+.headerTitle {
+  font-size: 1.5rem;
+  font-style: italic;
+  text-decoration: none;
+  font-weight: bold;
+  width: 10rem;
+}
+
+.nav_item {
+  text-decoration: none;
+  font-size: 1rem;
+  background-color: #f1f1f1;
+  padding-inline: 15px;
+  padding-block: 8px;
+  border-radius: 5px;
+}
+
+.nav_item:hover {
+  background-color: rgb(28, 132, 206);
+  color: white;
+}

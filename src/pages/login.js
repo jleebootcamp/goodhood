@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
+import style from "./login.module.css";
 
 import Auth from '../utils/auth';
 
@@ -41,53 +42,68 @@ const Login = (props) => {
   };
 
   return (
-    <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-lg-10">
-        <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Login</h4>
-          <div className="card-body">
-            {data ? (
-              <p>
-                Success! You may now head{' '}
-                <Link to="/">back to the homepage.</Link>
-              </p>
-            ) : (
-              <form onSubmit={handleFormSubmit}>
+    <section className={` ${style.section}`}>
+      <div className={`${style.container}`}>
+        <h3
+          className=""
+          style={{ marginBottom: "10px", color: "rgb(28, 132, 206)" }}
+        >
+          "What's Good in Da Hood?"
+        </h3>
+        <div className={style.formcontainer}>
+          {data ? (
+            <p>
+              Success! You may now head
+              <Link to="/">back to the homepage.</Link>
+            </p>
+          ) : (
+            <form onSubmit={handleFormSubmit} className={`${style.form}`}>
+              <label htmlFor="email">
+                <p>Email</p>
                 <input
-                  className="form-input"
+                  className=""
                   placeholder="Your email"
                   name="email"
                   type="email"
+                  required
                   value={formState.email}
                   onChange={handleChange}
                 />
+              </label>
+              <label htmlFor="pwd">
+                <p>Password</p>
                 <input
-                  className="form-input"
+                  className=""
                   placeholder="******"
                   name="password"
                   type="password"
+                  required
                   value={formState.password}
                   onChange={handleChange}
                 />
-                <button
-                  className="btn btn-block btn-primary"
-                  style={{ cursor: 'pointer' }}
-                  type="submit"
-                >
-                  Submit
-                </button>
-              </form>
-            )}
-
-            {error && (
-              <div className="my-3 p-3 bg-danger text-white">
-                {error.message}
-              </div>
-            )}
+              </label>
+              <button className="" style={{ cursor: "pointer" }} type="submit">
+                Continue
+              </button>
+            </form>
+          )}
+          <div>
+            <p>
+              Not a member? Signup{" "}
+              <span>
+                <Link to="/signup" style={{ color: "rgb(28, 132, 206)" }}>
+                  here
+                </Link>
+              </span>
+            </p>
           </div>
+
+          {error && (
+            <div className="my-3 p-3 bg-danger text-white">{error.message}</div>
+          )}
         </div>
       </div>
-    </main>
+    </section>
   );
 };
 

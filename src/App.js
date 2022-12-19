@@ -8,7 +8,7 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import Home from './pages/home/home';
+import Home from './pages/home/home.js'; // adding .js to "home"
 import Header from "./components/header/header.js";
 import Footer from "./components/footer/footer.js";
 
@@ -16,7 +16,7 @@ import Signup from './pages/Signup';
 import Login from './pages/login';
 import SingleQuestion from './pages/SingleQuestion';
 import Profile from './pages/Profile';
-import Map from "./components/Map/Map";
+// import Map from "./components/Map/Map";
 
 // function App() {
 //   const [currentPage, setCurrentPage] = useState("Login");
@@ -58,7 +58,7 @@ function App() {
           <div className="container">
             <Routes>
               <Route 
-                path="/"
+                path="/" // added abc, testing homepage route
                 element={<Home />}
               />
               <Route 
