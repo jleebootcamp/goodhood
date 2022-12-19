@@ -1,10 +1,10 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 
-import QuestionList from '../../components/QuestionList';
-import QuestionForm from '../../components/QuestionForm';
+import QuestionList from '../components/QuestionList';
+import QuestionForm from '../components/QuestionForm';
 
-import { QUERY_QUESTIONS } from '../../utils/queries';
+import { QUERY_QUESTIONS } from '../utils/queries';
 
 const Home = () => {
   const { loading, data } = useQuery(QUERY_QUESTIONS);
