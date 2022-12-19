@@ -1,16 +1,12 @@
 # What's Good in the Hood?
     
-    # Table of Contents
-    - [Description](#description)
-    - [Screenshots](#screenshots)
-    - [Demo](#demo)
-    - [Live Site](#live-site)
-    - [Contributors](#contributors)
 
 ## Description
 "What's Good in the Hood" is a community forum where you can find local reccomendations for the best attractions in your area. Interact with your neighborhood and connect over your love of parks, coffee, restaurants and more!
 ## Screenshots
-
+Home Page ![homepage image](public/assets/HomePage.jpeg) <br />
+Login ![login image](public/assets/Login.jpeg) <br />
+Sign Up ![signup image](public/assets/SignUp.jpeg) <br />
 ## Demo
 Click [here](https://drive.google.com/file/d/1YW5KqrrU7XUoo2wmXF1ihFi4gq7qHjmw/view) to view a demo of the application.
 ## Live Site
